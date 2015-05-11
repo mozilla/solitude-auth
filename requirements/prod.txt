@@ -1,0 +1,33 @@
+# This file pulls in everything a developer needs. If it's a basic package
+# needed to run the site, it belongs in requirements/prod.txt. If it's a
+# package for developers (testing, docs, etc.), it goes in this file.
+
+# sha256: xsfnqWHihH0FDSFMqW3DFnu18rJc1cbLLuqW4XF_St4
+Django==1.8.1
+
+# sha256: Js7zxvYt8u7pVaJRld5veTiBMXwPX9GhxvniLzUakxM
+django-nose==1.4
+
+# sha256: dfOC_U-4qYir_57r0vmCMu9gHUq0XmiDWyOHIcn1TbY
+# sha256: 3fcrbl8q-NBkTHvnJDWgGKy50XWUfLjlNdVliuoftrg
+django-raven-metlog==0.1
+
+# sha256: 0KoK5QWN_XDnBqtJkzLQd0Cgn1dmkPK1zVr-zLlzvgY
+# sha256: EaJrAajCfnJf_NoJvcpJ2o-PN5NnNGPMj0ZuJpmlh80
+django-statsd-mozilla==0.3.8.3
+
+# sha256: BJydMWAgmmYq7UgQsErz5T_QrYbqSwnM5tQXo7KVN5o
+# sha256: IXHpIC0RjTAtXbHey1Ldhit54qYmyhllOmkUV0psp9k
+nose==1.2.1
+
+# sha256: OcbbmgjccdxTa9lJXDey3ixLhAb8KfO4RAcWcQtoHjI
+# sha256: xl90Ou922SK3ZeHPUeJLEov4NIWMLBL1ppo8FJwO538
+raven==4.2.3
+
+# sha256: Eglk19nvf06cYtFUCZ-hzSJgYgCpm9ZAoEL7w-TkuhY
+# sha256: T1Y7kHeCssld0suviCqWEz5WfUYpCg56r6DG8--tGbo
+requests==0.14.1
+
+# sha256: b8m-K1ABAiDJeSylsFis9DvyJelR0Jb6WnZcjdAeCR4
+# sha256: 3rTczTYxdaVUZdxlaZwAHDHbBeUJ6KQfzPPbYcFASsY
+statsd==1.0.0

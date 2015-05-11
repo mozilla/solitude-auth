@@ -1,0 +1,32 @@
+# This file pulls in everything Jenkins needs for CI. If it's a basic package
+# needed to run the site, it belongs in requirements/prod.txt. If it's a
+# package for developers (testing, docs, etc.), it goes in dev.txt.
+# If it's something we only need on Jenkins it goes here.
+-r prod.txt
+
+# Flake8 requirements
+# sha256: yZzJcW1mVdnIvLHndjK4YVvwq9KC16vZ9cIUjK1_xmk
+# sha256: XuGkPM0HFtYGFSHuxpN8mD76AneTAT5XJxLE2lXHyD4
+flake8==2.3.0
+
+# sha256: P6gKELNtUWhr93RPXcmWIs1cmM6O1kAi5imGiq_Bd2k
+pyflakes==0.8.1
+
+# sha256: FbQhMbJfN2Fl0ZX-ThewooMRGCqvkzDV61dbvtpaaYk
+pep8==1.5.7
+
+# sha256: PYypv2XFAU9GkYBUTR3Vu1ud9wmq1jBPnC5DcK4Ke3w
+# sha256: ic9r9P9kT_i5EuL6fiq7aNV6jn6Rjjk8coQNMNLrzws
+mccabe==0.3
+
+# sha256: uDndLZwRfHAUMMFJlWkYpCOphjtIsJyQ4wpgE-fS9E8
+# sha256: l5mtnC6N_91J4fMDOTJoU_ttu6Hi_A8mAyMn0b9QRtA
+mock==1.0.1
+
+# sha256: Utw-E4etWsB_KruzYtWovPUmUW7UoFF6ay6EGr2O6rw
+# sha256: ku47hrXBkhwtnawhe--JkMX4Usi8TZAYyv4PPzuBzTo
+nosenicedots==0.5
+
+# sha256: Zf-5k0lWWuoQyYANEgM4TUhuwUp8gz31dVdsRfTp8Dk
+# sha256: c0XZOWs_PApljFy328eZw6lq-kgpnZbZeB6rprqwt7A
+nose-blockage==0.1.2

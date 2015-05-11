@@ -1,0 +1,11 @@
+# This file pulls in everything a developer needs. If it's a basic package
+# needed to run the site, it belongs in requirements/prod.txt. If it's a
+# package for developers (testing, docs, etc.), it goes in this file.
+
+-r test.txt
+
+# sha256: 1IRMlCDwtew8_Bo88mTxOcFuuJGrpViEpgHt6xHECtw
+autopep8==1.1.1
+
+# sha256: d8kqqvXXiwo6jDT-0cYikggqtS4mHE831h2S4MO3vy8
+baked==0.2.5
