@@ -40,11 +40,10 @@ def prepare(request):
 
 def send(requested):
     response = HttpResponse()
-    print requests
     method = getattr(requests, requested['method'])
 
     try:
-        with statsd.timer('payments-server-auth.send'):
+        with statsd.timer('solitude-auth.send'):
             log.info('Calling: {0}'.format(requested['url']))
             result = method(
                 requested['url'],
