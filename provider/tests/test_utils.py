@@ -1,8 +1,10 @@
+from StringIO import StringIO
+
 from django.conf import settings
 from django.test import RequestFactory, TestCase
 
 from nose.tools import eq_, ok_, raises
-from mock import patch
+from mock import Mock, patch
 from auth.exceptions import MissingDestination
 from provider import utils
 
@@ -46,14 +48,22 @@ class Proxy(TestCase):
 
 class TestSend(Proxy):
 
-    def test_ok(self):
-        res = utils.send({
-            'body': '',
-            'headers': {},
-            'method': 'get',
-            'timeout': 60,
+    def send(self, **kwargs):
+        kw = {
+            'body': '', 'headers': {}, 'method': 'get', 'timeout': 60,
             'url': 'http://f.c',
-        })
+        }
+        kw.update(kwargs)
+        return utils.send(kw)
+
+    def body(self, data):
+        raw = StringIO()
+        raw.write(data)
+        raw.seek(0)
+        return raw
+
+    def test_ok(self):
+        self.send()
         self.req.get.assert_called_with(
             'http://f.c',
             verify=True,
@@ -61,3 +71,24 @@ class TestSend(Proxy):
             timeout=60,
             headers={}
         )
+
+    def test_patch(self):
+        self.send(method='patch')
+        assert self.req.patch.assert_called
+
+    def test_network_error(self):
+        self.req.get.side_effect = requests.exceptions.RequestException
+        res = self.send()
+        eq_(res.status_code, 502)
+
+    def test_2xx(self):
+        res = requests.Response()
+        res.status_code = 101
+        res.raw = self.body('foo')
+        res.headers['Content-Type'] = 'app/xml'
+        self.req.get.return_value = res
+
+        res = self.send()
+        eq_(res.status_code, 101)
+        eq_(res.content, 'foo')
+        eq_(res['Content-Type'], 'app/xml')
