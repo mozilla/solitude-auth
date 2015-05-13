@@ -4,6 +4,7 @@
 
 -r test.txt
 
+# sha256: bpQ8fq1eguaZWQ5Uh551R1RA4bTk2gfsHkyiNCdT4bw
 # sha256: 1IRMlCDwtew8_Bo88mTxOcFuuJGrpViEpgHt6xHECtw
 autopep8==1.1.1
 

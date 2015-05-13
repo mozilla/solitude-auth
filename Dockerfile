@@ -17,7 +17,6 @@ RUN peep install \
     --download-cache /pip/cache \
     --no-deps \
     -r /pip/requirements/dev.txt \
-    -r /pip/requirements/docs.txt \
     --find-links https://pyrepo.addons.mozilla.org/
 
 # Ship the source in the container, its up to docker-compose to override it
