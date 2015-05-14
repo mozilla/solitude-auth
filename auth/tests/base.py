@@ -31,3 +31,9 @@ class BaseTestCase(TestCase):
     def get(self, url):
         return self.client.get(
             url, **{settings.HEADER_DESTINATION: 'https://b.c/some/url/'})
+
+    def post(self, url, data, content_type='text/xml'):
+        return self.client.post(
+            url, data, content_type=content_type,
+            **{settings.HEADER_DESTINATION: 'https://b.c/some/url/'}
+        )

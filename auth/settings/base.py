@@ -7,25 +7,40 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import logging
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'please change this'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
+
+LOGGING = {
+    'version': 1,
+    'filters': {},
+    'formatters': {},
+    'handlers': {
+        'sentry': {
+            'level': 'ERROR',
+            'class': 'raven.contrib.django.handlers.SentryHandler',
+        },
+        'console': {
+            '()': logging.StreamHandler,
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'sentry'],
+            'level': 'DEBUG',
+            'propagate': True
+        }
+    }
+}
+LOGGING_CONFIG = 'django.utils.log.dictConfig'
 
 # Application definition
 
@@ -79,12 +94,12 @@ STATIC_URL = '/static/'
 DEFAULT_TIMEOUT = 30
 
 # HTTP Headers that we will pass through, if provided by the client.
-HEADERS_ALLOWED = [
-    'Accept',
-    'Content-type',
-    'X-ApiVersion',  # Braintree
-    'SOAPAction'  # Bango
-]
+HEADERS_ALLOWED = {
+    'Accept': 'Accept',
+    'Content-Type': 'Content-Type',
+    'HTTP-X-ApiVersion': 'X-ApiVersion',  # Braintree
+    'HTTP-X-Solitude-SOAPAction': 'SOAPAction'  # Bango
+}
 
 # Where there the actual destination will be stored in the incoming request.
 HEADER_DESTINATION = 'HTTP_X_SOLITUDE_SERVICE'
@@ -92,8 +107,10 @@ HEADER_DESTINATION = 'HTTP_X_SOLITUDE_SERVICE'
 ################################################################
 # Payment provider settings.
 
-BANGO_USERNAME = ''
-BANGO_PASSWORD = ''
+BANGO_AUTH = {
+    'USER': os.environ.get('BANGO_AUTH_USER'),
+    'PASSWORD': os.environ.get('BANGO_AUTH_PASSWORD')
+}
 
 BRAINTREE_PUBLIC_KEY = os.environ.get('BRAINTREE_PUBLIC_KEY')
 BRAINTREE_PRIVATE_KEY = os.environ.get('BRAINTREE_PRIVATE_KEY')

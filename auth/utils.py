@@ -22,6 +22,7 @@ def prepare(request):
         log.warning('Client did not specify the provider URL in the headers.')
         raise MissingDestination()
 
+    log.info('Processing request for: {}'.format(url))
     new = {
         'url': url,
         'data': request.body,
@@ -33,13 +34,14 @@ def prepare(request):
     }
 
     # Add in any headers we need to pass through,
-    for k in settings.HEADERS_ALLOWED:
+    for incoming, outgoing in settings.HEADERS_ALLOWED.items():
         # Transform the key from the settings into the appropriate
         # format from Django request.
-        meta = 'HTTP_' + k.upper().replace('-', '_')
+        meta = incoming.upper().replace('-', '_')
         if meta in request.META:
-            new['headers'][k] = request.META[meta]
-            log.info('Adding header: {0}, {1}'.format(k, request.META[meta]))
+            new['headers'][outgoing] = request.META[meta]
+            log.info('Adding header: {}, {} from {}'
+                     .format(outgoing, request.META[meta], incoming))
 
     return new
 
