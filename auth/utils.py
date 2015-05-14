@@ -2,9 +2,9 @@ from logging import getLogger
 
 from django.conf import settings
 from django.http import HttpResponse
-from django_statsd.clients import statsd
 
 import requests
+from django_statsd.clients import statsd
 
 from auth.exceptions import MissingDestination
 
@@ -12,6 +12,10 @@ log = getLogger(__name__)
 
 
 def prepare(request):
+    """
+    Takes in the incoming request object and does the work
+    to figure out what the next request in the chain should be.
+    """
     try:
         url = request.META[settings.HEADER_DESTINATION]
     except KeyError:
@@ -39,6 +43,14 @@ def prepare(request):
 
 
 def send(requested):
+    """
+    Given data from request, call the actual provider server.
+
+    If a provider generates a 500 it is returned as a 502 and does not raise
+    an error locally.
+
+    All other responses are returned to the calling application.
+    """
     response = HttpResponse()
     method = getattr(requests, requested['method'])
 

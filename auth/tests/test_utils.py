@@ -3,12 +3,13 @@ from StringIO import StringIO
 from django.conf import settings
 from django.test import RequestFactory, TestCase
 
-from nose.tools import eq_, ok_, raises
-from mock import Mock, patch
-from auth.exceptions import MissingDestination
-from provider import utils
-
 import requests
+from mock import patch
+from nose.tools import eq_, ok_, raises
+
+from auth import utils
+from auth.exceptions import MissingDestination
+
 
 class TestPrepare(TestCase):
 
@@ -39,7 +40,7 @@ class TestPrepare(TestCase):
 class Proxy(TestCase):
 
     def setUp(self):
-        request = patch('provider.utils.requests', name='test.proxy')
+        request = patch('auth.utils.requests', name='test.proxy')
         self.req = request.start()
         self.req.exceptions = requests.exceptions
         self.req.patcher = request
@@ -65,11 +66,8 @@ class TestSend(Proxy):
     def test_ok(self):
         self.send()
         self.req.get.assert_called_with(
-            'http://f.c',
-            verify=True,
-            data='',
-            timeout=60,
-            headers={}
+            'http://f.c', verify=True, data='',
+            timeout=60, headers={}
         )
 
     def test_patch(self):
@@ -83,12 +81,12 @@ class TestSend(Proxy):
 
     def test_2xx(self):
         res = requests.Response()
-        res.status_code = 101
+        res.status_code = 201
         res.raw = self.body('foo')
         res.headers['Content-Type'] = 'app/xml'
         self.req.get.return_value = res
 
         res = self.send()
-        eq_(res.status_code, 101)
+        eq_(res.status_code, 201)
         eq_(res.content, 'foo')
         eq_(res['Content-Type'], 'app/xml')
