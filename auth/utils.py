@@ -24,10 +24,12 @@ def prepare(request):
 
     new = {
         'url': url,
-        'body': '',
-        'method': request.method,
+        'data': request.body,
+        'method': request.method.lower(),
         'headers': {},
-        'timeout': settings.DEFAULT_TIMEOUT
+        'timeout': settings.DEFAULT_TIMEOUT,
+        # Argument passed to requests, see: http://bit.ly/1A4orBB
+        'verify': True
     }
 
     # Add in any headers we need to pass through,
@@ -52,18 +54,16 @@ def send(requested):
     All other responses are returned to the calling application.
     """
     response = HttpResponse()
-    method = getattr(requests, requested['method'])
+    method = getattr(requests, requested.pop('method'))
+
+    if not requested['verify']:
+        raise ValueError('verify must be a path to a .crt or True')
+
 
     try:
         with statsd.timer('solitude-auth.send'):
             log.info('Calling: {0}'.format(requested['url']))
-            result = method(
-                requested['url'],
-                data=requested['body'],
-                headers=requested['headers'],
-                timeout=requested['timeout'],
-                verify=True
-            )
+            result = method(requested.pop('url'), **requested)
     except requests.exceptions.RequestException as err:
         log.exception('%s: %s' % (err.__class__.__name__, err))
         # Return exceptions from the provider as a 502, leaving
