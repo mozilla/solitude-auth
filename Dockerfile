@@ -4,24 +4,19 @@
 # NOTE: this is not provided for production usage.
 FROM mozillamarketplace/centos-mysql-mkt:0.2
 
-RUN yum install -y supervisor
-RUN yum install -y bash-completion
-
-RUN mkdir -p /pip/{cache,build}
-ADD requirements /pip/requirements
-WORKDIR /pip
-# Download this securely from pyrepo first.
-RUN pip install --no-deps --find-links https://pyrepo.addons.mozilla.org/ peep
-RUN peep install \
-    --build /pip/build \
-    --download-cache /pip/cache \
-    --no-deps \
-    -r /pip/requirements/dev.txt \
-    --find-links https://pyrepo.addons.mozilla.org/
+RUN yum install -y supervisor bash-completion && yum clean all
 
 # Ship the source in the container, its up to docker-compose to override it
 # if it wants to.
 COPY . /srv/auth
+
+# Download this securely from pyrepo first.
+RUN pip install --no-deps --find-links https://pyrepo.addons.mozilla.org/ peep
+RUN peep install \
+    --download-cache /tmp/pip/cache \
+    --no-deps \
+    -r /srv/auth/requirements/dev.txt \
+    --find-links https://pyrepo.addons.mozilla.org/
 
 EXPOSE 2603
 
