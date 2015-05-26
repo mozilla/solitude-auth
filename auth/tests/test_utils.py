@@ -1,3 +1,5 @@
+import json
+
 from django.conf import settings
 from django.test import RequestFactory, TestCase
 
@@ -6,7 +8,7 @@ from nose.tools import eq_, ok_, raises
 
 from auth import utils
 from auth.exceptions import MissingDestination
-from auth.tests.base import Proxy
+from auth.tests.base import BaseTestCase
 
 
 class TestPrepare(TestCase):
@@ -20,9 +22,11 @@ class TestPrepare(TestCase):
         utils.prepare(RequestFactory().get('/'))
 
     def test_body(self):
-        post = RequestFactory().post('/', body='foo')
+        data = json.dumps({'key': 'value'})
+        post = RequestFactory().post('/', data,
+                                     content_type='application/json')
         post.META[settings.HEADER_DESTINATION] = '/some/url/'
-        utils.prepare(post)['body'] = 'foo'
+        eq_(utils.prepare(post)['data'], data)
 
     def test_url_ok(self):
         res = utils.prepare(self.req)
@@ -40,7 +44,7 @@ class TestPrepare(TestCase):
         ok_('Foo' not in res['headers'])
 
 
-class TestSend(Proxy):
+class TestSend(BaseTestCase):
 
     def send(self, **kwargs):
         kw = {

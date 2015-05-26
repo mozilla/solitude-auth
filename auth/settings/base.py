@@ -97,4 +97,3 @@ BANGO_PASSWORD = ''
 
 BRAINTREE_PUBLIC_KEY = ''
 BRAINTREE_PRIVATE_KEY = ''
-BRAINTREE_CRT = '/ssl/api_braintreegateway_com.ca.crt'

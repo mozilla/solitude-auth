@@ -59,7 +59,6 @@ def send(requested):
     if not requested['verify']:
         raise ValueError('verify must be a path to a .crt or True')
 
-
     try:
         with statsd.timer('solitude-auth.send'):
             log.info('Calling: {0}'.format(requested['url']))

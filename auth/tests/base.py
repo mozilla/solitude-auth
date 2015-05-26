@@ -7,10 +7,10 @@ import requests
 from mock import patch
 
 
-class Proxy(TestCase):
+class BaseTestCase(TestCase):
 
     def setUp(self):
-        request = patch('auth.utils.requests', name='test.proxy')
+        request = patch('auth.utils.requests', name='test.BaseTestCase')
         self.req = request.start()
         self.req.exceptions = requests.exceptions
         self.req.patcher = request

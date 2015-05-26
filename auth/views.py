@@ -1,9 +1,10 @@
 from base64 import encodestring as encodebytes
-from urlparse import urlparse
 
 from django.conf import settings
 
 from utils import prepare, send
+
+from braintree.environment import Environment
 
 
 def bango(request):
@@ -25,10 +26,7 @@ def braintree(request):
     # Taken from http://bit.ly/1cBESdC and ensures that the
     # crt is passed through to the requests verify parameter.
     new_request['verify'] = (
-        '{url.scheme}://{url.netloc}{crt}'.
-        format(url=urlparse(new_request['url']),
-               crt=settings.BRAINTREE_CRT))
-
+        Environment.braintree_root() + '/ssl/api_braintreegateway_com.ca.crt')
     return send(new_request)
 
 
