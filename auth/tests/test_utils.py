@@ -1,14 +1,14 @@
-from StringIO import StringIO
+import json
 
 from django.conf import settings
 from django.test import RequestFactory, TestCase
 
 import requests
-from mock import patch
 from nose.tools import eq_, ok_, raises
 
 from auth import utils
 from auth.exceptions import MissingDestination
+from auth.tests.base import BaseTestCase
 
 
 class TestPrepare(TestCase):
@@ -20,6 +20,13 @@ class TestPrepare(TestCase):
     @raises(MissingDestination)
     def test_no_header(self):
         utils.prepare(RequestFactory().get('/'))
+
+    def test_body(self):
+        data = json.dumps({'key': 'value'})
+        post = RequestFactory().post('/', data,
+                                     content_type='application/json')
+        post.META[settings.HEADER_DESTINATION] = '/some/url/'
+        eq_(utils.prepare(post)['data'], data)
 
     def test_url_ok(self):
         res = utils.prepare(self.req)
@@ -37,38 +44,24 @@ class TestPrepare(TestCase):
         ok_('Foo' not in res['headers'])
 
 
-class Proxy(TestCase):
-
-    def setUp(self):
-        request = patch('auth.utils.requests', name='test.proxy')
-        self.req = request.start()
-        self.req.exceptions = requests.exceptions
-        self.req.patcher = request
-        self.addCleanup(request.stop)
-
-
-class TestSend(Proxy):
+class TestSend(BaseTestCase):
 
     def send(self, **kwargs):
         kw = {
             'body': '', 'headers': {}, 'method': 'get', 'timeout': 60,
-            'url': 'http://f.c',
+            'url': 'http://f.c', 'verify': True
         }
         kw.update(kwargs)
         return utils.send(kw)
 
-    def body(self, data):
-        raw = StringIO()
-        raw.write(data)
-        raw.seek(0)
-        return raw
-
     def test_ok(self):
         self.send()
         self.req.get.assert_called_with(
-            'http://f.c', verify=True, data='',
-            timeout=60, headers={}
-        )
+            'http://f.c', verify=True, body='', timeout=60, headers={})
+
+    @raises(ValueError)
+    def test_verify_sanity(self):
+        self.send(verify=False)
 
     def test_patch(self):
         self.send(method='patch')
@@ -80,12 +73,8 @@ class TestSend(Proxy):
         eq_(res.status_code, 502)
 
     def test_2xx(self):
-        res = requests.Response()
-        res.status_code = 201
-        res.raw = self.body('foo')
-        res.headers['Content-Type'] = 'app/xml'
-        self.req.get.return_value = res
-
+        response = self.get_response('foo', 201, {'Content-Type': 'app/xml'})
+        self.req.get.return_value = response
         res = self.send()
         eq_(res.status_code, 201)
         eq_(res.content, 'foo')

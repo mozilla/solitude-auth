@@ -2,6 +2,9 @@
 # needed to run the site, it belongs in requirements/prod.txt. If it's a
 # package for developers (testing, docs, etc.), it goes in this file.
 
+# sha256: _j2iOsNV182HHtbm222XK1UwKhh4sixWgbfB_tl5leA
+braintree==3.12.0
+
 # sha256: xsfnqWHihH0FDSFMqW3DFnu18rJc1cbLLuqW4XF_St4
 # sha256: 2SrYWoaE2G0HgxKssIYIJIYaPPy0gkKPQIeEIfIlM5g
 Django==1.8.1
