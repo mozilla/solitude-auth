@@ -79,3 +79,22 @@ def send(requested):
     response.content = result.text
     response['Content-Type'] = result.headers['Content-Type']
     return response
+
+
+class BraintreeConfig(object):
+    """
+    Rather than trying to recreate the entire Environment, which needs
+    information we don't have, just create an object which contains
+    the parts we need to parse webhooks, namely the public and private keys.
+    """
+    def __init__(self):
+        self.public_key = settings.BRAINTREE_PUBLIC_KEY
+        self.private_key = settings.BRAINTREE_PRIVATE_KEY
+
+
+class BraintreeGateway(object):
+    """
+    Provide access to our simplified BraintreeConfig.
+    """
+    def __init__(self):
+        self.config = BraintreeConfig()
