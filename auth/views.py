@@ -18,7 +18,8 @@ def braintree(request):
     2) Ensure that requests will check the correct Braintree crt.
     """
     new_request = prepare(request)
-
+    # Until https://github.com/mozilla/solitude-auth/pull/3 is merged.
+    new_request['headers']['Content-Type'] = 'application/xml; charset=utf-8'
     # Add in the correct Braintree Authorization.
     new_request['headers']['Authorization'] = b"Basic " + encodebytes(
         settings.BRAINTREE_PUBLIC_KEY.encode('ascii') + b":" +
