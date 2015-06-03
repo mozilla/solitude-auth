@@ -87,7 +87,7 @@ HEADERS_ALLOWED = [
 ]
 
 # Where there the actual destination will be stored in the incoming request.
-HEADER_DESTINATION = 'HTTP_X_SOLITUDE_URL'
+HEADER_DESTINATION = 'HTTP_X_SOLITUDE_SERVICE'
 
 ################################################################
 # Payment provider settings.
