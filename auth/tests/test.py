@@ -21,4 +21,7 @@ class TestBraintree(BaseTestCase):
             'https://b.c/some/url/',
             verify=(Environment.braintree_root() +
                     '/ssl/api_braintreegateway_com.ca.crt'),
-            data='', timeout=30, headers={'Authorization': 'Basic Og=='})
+            data='', timeout=30, headers={
+                'Authorization': 'Basic Og==',
+                'Content-Type': 'application/xml; charset=utf-8'
+            })
