@@ -1,11 +1,17 @@
+from logging import getLogger
 from base64 import encodestring as encodebytes
 
-from django.conf import settings
 from lxml import etree
 
-from utils import prepare, send
+from django.conf import settings
+from django.http import HttpResponse
+
+from utils import BraintreeGateway, prepare, send
 
 from braintree.environment import Environment
+from braintree.webhook_notification_gateway import WebhookNotificationGateway
+
+log = getLogger(__name__)
 
 
 def bango(request):
@@ -62,6 +68,48 @@ def braintree(request):
         Environment.braintree_root() + '/ssl/api_braintreegateway_com.ca.crt')
 
     return send(new_request)
+
+
+def braintree_verify(request):
+    """
+    Process Braintree webhooks. This is a pretty simple endpoint that
+    assumes the data has already been sanitised and cleaned by the solitude
+    server.
+
+    :bt_challenge string: the bt_challenge param sent by Braintree.
+
+    :status 200: contains the string to pass back.
+
+    Any other status is a failure to verify.
+    """
+    data = request.GET.get('bt_challenge')
+    res = WebhookNotificationGateway(BraintreeGateway()).verify(data)
+    return HttpResponse(res)
+
+
+def braintree_parse(request):
+    """
+    Validate Braintree webhook data. This assumes that solitude has cleaned
+    the data. It doesn't actually return any data
+
+    :bt_payload string: the payload from braintree.
+    :bt_signature string: the signature that needs to be verified.
+
+    :status 204: the data is to be trusted. Contains no content.
+
+    Any other status is a failure to verify and should not be trusted.
+    """
+    data = (
+        request.POST.get('bt_signature', ''),
+        request.POST.get('bt_payload', '')
+    )
+    try:
+        WebhookNotificationGateway(BraintreeGateway()).parse(*data)
+    except:
+        log.exception('Parse webhook failed')
+        return HttpResponse(status=403)
+
+    return HttpResponse(status=204)
 
 
 def reference(request):

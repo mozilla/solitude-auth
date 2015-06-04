@@ -2,9 +2,14 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test.utils import override_settings
 
-from auth.tests.base import BaseTestCase
+import mock
+from nose.tools import eq_
 
 from braintree.environment import Environment
+from braintree.webhook_notification_gateway import WebhookNotificationGateway
+
+from auth.tests.base import BaseTestCase
+from auth.utils import BraintreeGateway
 
 
 @override_settings(BRAINTREE_PUBLIC_KEY='',
@@ -13,11 +18,14 @@ class TestBraintree(BaseTestCase):
 
     def setUp(self):
         super(self.__class__, self).setUp()
-        self.url = reverse('braintree')
+        # This is the verify string at test creation which we'll store so tests
+        # can manipulate the inputs.
+        self.verify_string = (
+            WebhookNotificationGateway(BraintreeGateway()).verify(''))
 
     def test_ok(self):
         self.req.get.return_value = self.get_response('foo', 200)
-        assert self.get(self.url).status_code, 200
+        assert self.get(reverse('braintree:auth')).status_code, 200
         self.req.get.assert_called_with(
             'https://b.c/some/url/',
             verify=(Environment.braintree_root() +
@@ -26,6 +34,42 @@ class TestBraintree(BaseTestCase):
                 'Authorization': 'Basic Og==',
                 'Content-Type': 'application/xml; charset=utf-8'
             })
+
+    def test_verify_ok(self):
+        res = self.client.get(reverse('braintree:verify'))
+        eq_(res.status_code, 200)
+        eq_(res.content, self.verify_string)
+
+    def test_verify_changes(self):
+        res = self.client.get(reverse('braintree:verify') + '?bt_challenge=f')
+        assert res.content != self.verify_string
+
+    def test_verify_changes_with_keys(self):
+        with self.settings(BRAINTREE_PUBLIC_KEY='foo'):
+            res = self.client.get(reverse('braintree:verify'))
+            assert res.content != self.verify_string
+
+    def test_parse_payload(self):
+        with mock.patch('braintree.webhook_notification_gateway.'
+                        'WebhookNotificationGateway.parse') as parse:
+            parse.return_value = {}
+            res = self.client.post(
+                reverse('braintree:parse'),
+                {'bt_signature': 'sig', 'bt_payload': 'payload'}
+            )
+            parse.assert_called_with('sig', 'payload')
+        eq_(res.status_code, 204)
+
+    def test_parse_payload_not_ok(self):
+        res = self.client.post(
+            reverse('braintree:parse'),
+            {'bt_signature': self.verify_string, 'bt_payload': 'b'}
+        )
+        eq_(res.status_code, 403)
+
+    def test_parse_totally_not_ok(self):
+        res = self.client.post(reverse('braintree:parse'))
+        eq_(res.status_code, 403)
 
 
 # The SOAP-ENV is all on the same line so that the new lines equals the output
