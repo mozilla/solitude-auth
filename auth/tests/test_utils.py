@@ -33,7 +33,7 @@ class TestPrepare(TestCase):
         eq_(res['url'], '/some/url/')
 
     def test_header_added(self):
-        self.req.META['HTTP_SOAPACTION'] = 'something'
+        self.req.META['HTTP_X_SOLITUDE_SOAPACTION'] = 'something'
         res = utils.prepare(self.req)
         eq_(res['headers']['SOAPAction'], 'something')
 

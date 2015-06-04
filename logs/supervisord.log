@@ -1,0 +1,213 @@
+2015-05-14 23:29:13,551 CRIT Supervisor running as root (no user in config file)
+2015-05-14 23:29:13,560 INFO supervisord started with pid 1
+2015-05-14 23:29:14,563 INFO spawned: 'solitude-auth' with pid 7
+2015-05-14 23:29:16,295 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-14 23:29:52,582 WARN received SIGTERM indicating exit request
+2015-05-14 23:29:52,583 INFO waiting for solitude-auth to die
+2015-05-14 23:29:52,585 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-05-14 23:29:52,585 CRIT reaped unknown pid 12)
+2015-05-14 23:30:02,595 CRIT Supervisor running as root (no user in config file)
+2015-05-14 23:30:02,604 INFO supervisord started with pid 1
+2015-05-14 23:30:03,607 INFO spawned: 'solitude-auth' with pid 7
+2015-05-14 23:30:05,328 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-14 23:38:55,762 WARN received SIGTERM indicating exit request
+2015-05-14 23:38:55,763 INFO waiting for solitude-auth to die
+2015-05-14 23:38:55,765 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-05-14 23:38:55,765 CRIT reaped unknown pid 12)
+2015-05-14 23:41:18,525 CRIT Supervisor running as root (no user in config file)
+2015-05-14 23:41:18,533 INFO supervisord started with pid 1
+2015-05-14 23:41:19,539 INFO spawned: 'solitude-auth' with pid 7
+2015-05-14 23:41:21,230 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-14 23:41:59,092 INFO exited: solitude-auth (terminated by SIGTERM; not expected)
+2015-05-14 23:41:59,094 WARN received SIGTERM indicating exit request
+2015-05-15 04:21:59,023 CRIT Supervisor running as root (no user in config file)
+2015-05-15 04:21:59,040 INFO supervisord started with pid 1
+2015-05-15 04:22:00,044 INFO spawned: 'solitude-auth' with pid 7
+2015-05-15 04:22:01,085 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-15 05:28:50,608 CRIT Supervisor running as root (no user in config file)
+2015-05-15 05:28:50,619 INFO supervisord started with pid 1
+2015-05-15 05:28:51,622 INFO spawned: 'solitude-auth' with pid 7
+2015-05-15 05:28:53,279 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-15 05:28:55,480 WARN received SIGTERM indicating exit request
+2015-05-15 05:28:55,480 INFO waiting for solitude-auth to die
+2015-05-15 05:28:55,483 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-05-15 05:28:55,483 CRIT reaped unknown pid 12)
+2015-05-15 05:28:57,193 CRIT Supervisor running as root (no user in config file)
+2015-05-15 05:28:57,201 INFO supervisord started with pid 1
+2015-05-15 05:28:58,206 INFO spawned: 'solitude-auth' with pid 7
+2015-05-15 05:28:59,856 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-15 17:30:20,456 WARN received SIGTERM indicating exit request
+2015-05-15 17:30:20,461 INFO waiting for solitude-auth to die
+2015-05-15 17:30:20,462 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-05-15 17:30:20,463 CRIT reaped unknown pid 12)
+2015-05-15 17:30:22,232 CRIT Supervisor running as root (no user in config file)
+2015-05-15 17:30:22,243 INFO supervisord started with pid 1
+2015-05-15 17:30:23,247 INFO spawned: 'solitude-auth' with pid 7
+2015-05-15 17:30:24,984 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-15 17:56:04,858 CRIT Supervisor running as root (no user in config file)
+2015-05-15 17:56:04,869 INFO supervisord started with pid 1
+2015-05-15 17:56:05,875 INFO spawned: 'solitude-auth' with pid 7
+2015-05-15 17:56:07,551 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-15 17:56:26,146 WARN received SIGTERM indicating exit request
+2015-05-15 17:56:26,147 INFO waiting for solitude-auth to die
+2015-05-15 17:56:26,149 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-05-15 17:56:26,150 CRIT reaped unknown pid 12)
+2015-05-15 17:58:03,277 CRIT Supervisor running as root (no user in config file)
+2015-05-15 17:58:03,286 INFO supervisord started with pid 1
+2015-05-15 17:58:04,292 INFO spawned: 'solitude-auth' with pid 7
+2015-05-15 17:58:05,953 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-15 17:58:18,956 WARN received SIGTERM indicating exit request
+2015-05-15 17:58:18,957 INFO waiting for solitude-auth to die
+2015-05-15 17:58:18,959 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-05-15 17:58:18,959 CRIT reaped unknown pid 12)
+2015-05-15 18:01:31,375 CRIT Supervisor running as root (no user in config file)
+2015-05-15 18:01:31,385 INFO supervisord started with pid 1
+2015-05-15 18:01:32,389 INFO spawned: 'solitude-auth' with pid 8
+2015-05-15 18:01:34,145 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-15 18:06:56,461 CRIT Supervisor running as root (no user in config file)
+2015-05-15 18:06:56,471 INFO supervisord started with pid 1
+2015-05-15 18:06:57,477 INFO spawned: 'solitude-auth' with pid 7
+2015-05-15 18:06:59,188 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-15 18:11:31,735 CRIT Supervisor running as root (no user in config file)
+2015-05-15 18:11:31,744 INFO supervisord started with pid 1
+2015-05-15 18:11:32,749 INFO spawned: 'solitude-auth' with pid 7
+2015-05-15 18:11:34,445 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-16 00:25:34,115 WARN received SIGTERM indicating exit request
+2015-05-16 00:25:34,118 INFO waiting for solitude-auth to die
+2015-05-16 00:25:34,121 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-05-16 00:25:34,121 CRIT reaped unknown pid 12)
+2015-05-16 04:06:06,318 CRIT Supervisor running as root (no user in config file)
+2015-05-16 04:06:06,332 INFO supervisord started with pid 1
+2015-05-16 04:06:07,337 INFO spawned: 'solitude-auth' with pid 7
+2015-05-16 04:06:09,184 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-16 04:06:26,306 CRIT Supervisor running as root (no user in config file)
+2015-05-16 04:06:26,315 INFO supervisord started with pid 1
+2015-05-16 04:06:27,318 INFO spawned: 'solitude-auth' with pid 7
+2015-05-16 04:06:28,997 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-05-19 17:45:42,427 WARN received SIGTERM indicating exit request
+2015-05-19 17:45:42,433 INFO waiting for solitude-auth to die
+2015-05-19 17:45:42,434 INFO stopped: solitude-auth (terminated by SIGTERM)
+2015-05-19 17:45:42,435 CRIT reaped unknown pid 12)
+2015-06-02 19:39:33,033 CRIT Supervisor running as root (no user in config file)
+2015-06-02 19:39:33,081 INFO RPC interface 'supervisor' initialized
+2015-06-02 19:39:33,081 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-02 19:39:33,083 INFO supervisord started with pid 1
+2015-06-02 19:39:34,086 INFO spawned: 'solitude-auth' with pid 7
+2015-06-02 19:39:35,262 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-02 21:18:32,697 CRIT Supervisor running as root (no user in config file)
+2015-06-02 21:18:32,747 INFO RPC interface 'supervisor' initialized
+2015-06-02 21:18:32,748 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-02 21:18:32,750 INFO supervisord started with pid 1
+2015-06-02 21:18:33,753 INFO spawned: 'solitude-auth' with pid 7
+2015-06-02 21:18:34,846 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-02 21:18:47,077 WARN received SIGTERM indicating exit request
+2015-06-02 21:18:47,078 INFO waiting for solitude-auth to die
+2015-06-02 21:18:47,079 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-06-02 21:18:47,080 CRIT reaped unknown pid 14)
+2015-06-02 21:18:51,084 CRIT Supervisor running as root (no user in config file)
+2015-06-02 21:18:51,119 INFO RPC interface 'supervisor' initialized
+2015-06-02 21:18:51,119 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-02 21:18:51,122 INFO supervisord started with pid 1
+2015-06-02 21:18:52,126 INFO spawned: 'solitude-auth' with pid 8
+2015-06-02 21:18:53,950 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-02 21:41:06,437 WARN received SIGTERM indicating exit request
+2015-06-02 21:41:06,438 INFO waiting for solitude-auth to die
+2015-06-02 21:41:06,439 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-06-02 21:41:06,439 CRIT reaped unknown pid 15)
+2015-06-02 21:41:08,100 CRIT Supervisor running as root (no user in config file)
+2015-06-02 21:41:08,148 INFO RPC interface 'supervisor' initialized
+2015-06-02 21:41:08,148 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-02 21:41:08,150 INFO supervisord started with pid 1
+2015-06-02 21:41:09,153 INFO spawned: 'solitude-auth' with pid 8
+2015-06-02 21:41:10,978 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-02 21:41:42,620 WARN received SIGTERM indicating exit request
+2015-06-02 21:41:42,621 INFO waiting for solitude-auth to die
+2015-06-02 21:41:42,622 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-06-02 21:41:42,623 CRIT reaped unknown pid 15)
+2015-06-02 21:42:35,018 CRIT Supervisor running as root (no user in config file)
+2015-06-02 21:42:35,068 INFO RPC interface 'supervisor' initialized
+2015-06-02 21:42:35,068 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-02 21:42:35,070 INFO supervisord started with pid 1
+2015-06-02 21:42:36,074 INFO spawned: 'solitude-auth' with pid 8
+2015-06-02 21:42:38,005 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-02 21:46:34,190 WARN received SIGTERM indicating exit request
+2015-06-02 21:46:34,190 INFO waiting for solitude-auth to die
+2015-06-02 21:46:34,192 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-06-02 21:46:34,192 CRIT reaped unknown pid 15)
+2015-06-02 21:46:47,534 CRIT Supervisor running as root (no user in config file)
+2015-06-02 21:46:47,571 INFO RPC interface 'supervisor' initialized
+2015-06-02 21:46:47,572 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-02 21:46:47,573 INFO supervisord started with pid 1
+2015-06-02 21:46:48,577 INFO spawned: 'solitude-auth' with pid 8
+2015-06-02 21:46:50,501 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-02 22:04:04,412 WARN received SIGTERM indicating exit request
+2015-06-02 22:04:04,413 INFO waiting for solitude-auth to die
+2015-06-02 22:04:04,415 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-06-02 22:04:04,415 CRIT reaped unknown pid 15)
+2015-06-02 22:04:05,960 CRIT Supervisor running as root (no user in config file)
+2015-06-02 22:04:06,004 INFO RPC interface 'supervisor' initialized
+2015-06-02 22:04:06,005 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-02 22:04:06,006 INFO supervisord started with pid 1
+2015-06-02 22:04:07,010 INFO spawned: 'solitude-auth' with pid 7
+2015-06-02 22:04:08,878 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-02 22:07:08,850 WARN received SIGTERM indicating exit request
+2015-06-02 22:07:08,850 INFO waiting for solitude-auth to die
+2015-06-02 22:07:08,852 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-06-02 22:07:08,852 CRIT reaped unknown pid 14)
+2015-06-02 22:07:10,573 CRIT Supervisor running as root (no user in config file)
+2015-06-02 22:07:10,613 INFO RPC interface 'supervisor' initialized
+2015-06-02 22:07:10,613 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-02 22:07:10,615 INFO supervisord started with pid 1
+2015-06-02 22:07:11,618 INFO spawned: 'solitude-auth' with pid 7
+2015-06-02 22:07:13,505 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-03 04:47:27,837 CRIT Supervisor running as root (no user in config file)
+2015-06-03 04:47:27,877 INFO RPC interface 'supervisor' initialized
+2015-06-03 04:47:27,878 CRIT Server 'inet_http_server' running without any HTTP authentication checking
+2015-06-03 04:47:27,881 INFO supervisord started with pid 1
+2015-06-03 04:47:28,885 INFO spawned: 'solitude-auth' with pid 7
+2015-06-03 04:47:30,698 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-03 05:41:46,911 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-03 05:41:47,918 INFO spawned: 'solitude-auth' with pid 102
+2015-06-03 05:41:48,014 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-03 05:41:49,019 INFO spawned: 'solitude-auth' with pid 103
+2015-06-03 05:41:49,117 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-03 05:41:51,127 INFO spawned: 'solitude-auth' with pid 104
+2015-06-03 05:41:51,232 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-03 05:41:54,241 INFO spawned: 'solitude-auth' with pid 105
+2015-06-03 05:41:54,356 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-03 05:41:55,358 INFO gave up: solitude-auth entered FATAL state, too many start retries too quickly
+2015-06-03 06:20:08,349 WARN received SIGTERM indicating exit request
+2015-06-03 06:20:50,217 CRIT Supervisor running as root (no user in config file)
+2015-06-03 06:20:50,225 INFO supervisord started with pid 1
+2015-06-03 06:20:51,229 INFO spawned: 'solitude-auth' with pid 7
+2015-06-03 06:20:52,969 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-03 06:42:18,054 WARN received SIGTERM indicating exit request
+2015-06-03 06:42:18,056 INFO waiting for solitude-auth to die
+2015-06-03 06:42:18,058 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-06-03 06:42:18,059 CRIT reaped unknown pid 30)
+2015-06-03 06:42:19,651 CRIT Supervisor running as root (no user in config file)
+2015-06-03 06:42:19,661 INFO supervisord started with pid 1
+2015-06-03 06:42:20,665 INFO spawned: 'solitude-auth' with pid 8
+2015-06-03 06:42:22,476 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-03 06:48:57,521 WARN received SIGTERM indicating exit request
+2015-06-03 06:48:57,521 INFO waiting for solitude-auth to die
+2015-06-03 06:48:57,522 INFO stopped: solitude-auth (terminated by SIGKILL)
+2015-06-03 06:48:57,523 CRIT reaped unknown pid 13)
+2015-06-03 06:48:59,031 CRIT Supervisor running as root (no user in config file)
+2015-06-03 06:48:59,040 INFO supervisord started with pid 1
+2015-06-03 06:49:00,043 INFO spawned: 'solitude-auth' with pid 7
+2015-06-03 06:49:01,780 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-04 19:01:50,206 CRIT Supervisor running as root (no user in config file)
+2015-06-04 19:01:50,222 INFO supervisord started with pid 1
+2015-06-04 19:01:51,226 INFO spawned: 'solitude-auth' with pid 7
+2015-06-04 19:01:52,276 INFO success: solitude-auth entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2015-06-04 21:58:25,944 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-04 21:58:26,951 INFO spawned: 'solitude-auth' with pid 440
+2015-06-04 21:58:27,054 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-04 21:58:28,059 INFO spawned: 'solitude-auth' with pid 441
+2015-06-04 21:58:28,150 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-04 21:58:30,157 INFO spawned: 'solitude-auth' with pid 442
+2015-06-04 21:58:30,247 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-04 21:58:33,256 INFO spawned: 'solitude-auth' with pid 443
+2015-06-04 21:58:33,359 INFO exited: solitude-auth (exit status 1; not expected)
+2015-06-04 21:58:34,362 INFO gave up: solitude-auth entered FATAL state, too many start retries too quickly

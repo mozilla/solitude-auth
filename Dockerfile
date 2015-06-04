@@ -6,9 +6,8 @@ FROM mozillamarketplace/centos-mysql-mkt:0.2
 
 RUN yum install -y supervisor bash-completion && yum clean all
 
-# Ship the source in the container, its up to docker-compose to override it
-# if it wants to.
-COPY . /srv/auth
+# Copy requirements over first to cache the build.
+COPY requirements /srv/auth/requirements
 
 # Download this securely from pyrepo first.
 RUN pip install --no-deps --find-links https://pyrepo.addons.mozilla.org/ peep
@@ -17,6 +16,10 @@ RUN peep install \
     --no-deps \
     -r /srv/auth/requirements/dev.txt \
     --find-links https://pyrepo.addons.mozilla.org/
+
+# Ship the source in the container, its up to docker-compose to override it
+# if it wants to.
+COPY . /srv/auth
 
 EXPOSE 2603
 

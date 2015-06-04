@@ -1,6 +1,7 @@
 from base64 import encodestring as encodebytes
 
 from django.conf import settings
+from lxml import etree
 
 from utils import prepare, send
 
@@ -8,7 +9,38 @@ from braintree.environment import Environment
 
 
 def bango(request):
-    raise NotImplementedError
+    """
+    Pass the request through to Bango. There's one job:
+    1) Parse the XML and insert the correct user and password
+    """
+    namespaces = [
+        'com.bango.webservices.billingconfiguration',
+        'com.bango.webservices.directbilling',
+        'com.bango.webservices.mozillaexporter'
+    ]
+
+    new_request = prepare(request)
+    # Alter the XML to include the username and password from the config.
+    root = etree.fromstring(new_request['data'])
+
+    tags = lambda name: ['{%s}%s' % (n, name) for n in namespaces]
+    username, password = tags('username'), tags('password')
+    changed_username, changed_password = False, False
+
+    for element in root.iter():
+        if element.tag in username:
+            element.text = settings.BANGO_AUTH.get('USER', '')
+            changed_username = True
+        elif element.tag in password:
+            element.text = settings.BANGO_AUTH.get('PASSWORD', '')
+            changed_password = True
+        # No point in process the rest of the body if both have
+        # been changed.
+        if changed_username and changed_password:
+            break
+
+    new_request['data'] = etree.tostring(root)
+    return send(new_request)
 
 
 def braintree(request):
@@ -28,6 +60,7 @@ def braintree(request):
     # crt is passed through to the requests verify parameter.
     new_request['verify'] = (
         Environment.braintree_root() + '/ssl/api_braintreegateway_com.ca.crt')
+
     return send(new_request)
 
 
