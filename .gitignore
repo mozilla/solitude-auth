@@ -1,3 +1,4 @@
 auth/settings/local.py
 *.py[co]
 *.sw[po]
+logs/*
