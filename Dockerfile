@@ -2,7 +2,7 @@
 # Marketplace development environment.
 
 # NOTE: this is not provided for production usage.
-FROM mozillamarketplace/centos-mysql-mkt:0.2
+FROM mozillamarketplace/centos-mysql-mkt:latest
 
 RUN yum install -y supervisor bash-completion && yum clean all
 
