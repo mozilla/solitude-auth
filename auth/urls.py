@@ -11,5 +11,6 @@ urlpatterns = patterns(
     'auth.views',
     url('^v1/bango$', 'bango', name='bango'),
     url('^v1/braintree', include(braintree, namespace='braintree')),
-    url('^v1/reference$', 'reference', name='reference')
+    url('^v1/reference/(?P<reference_name>\w+)/', 'reference',
+        name='reference'),
 )

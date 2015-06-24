@@ -17,7 +17,7 @@ from auth.utils import BraintreeGateway
 class TestBraintree(BaseTestCase):
 
     def setUp(self):
-        super(self.__class__, self).setUp()
+        super(TestBraintree, self).setUp()
         # This is the verify string at test creation which we'll store so tests
         # can manipulate the inputs.
         self.verify_string = (
@@ -91,7 +91,7 @@ example = """<SOAP-ENV:Envelope xmlns:ns0="com.bango.webservices.mozillaexporter
 class TestBango(BaseTestCase):
 
     def setUp(self):
-        super(self.__class__, self).setUp()
+        super(TestBango, self).setUp()
         self.url = reverse('bango')
 
     def test_ok(self):
@@ -102,3 +102,26 @@ class TestBango(BaseTestCase):
             'https://b.c/some/url/', verify=True,
             data=data, timeout=30, headers={'Content-Type': 'text/xml'}
         )
+
+
+class TestZippy(BaseTestCase):
+
+    def setUp(self):
+        super(TestZippy, self).setUp()
+        self.url = reverse('reference', kwargs={'reference_name': 'reference'})
+
+    def test_not_registered(self):
+        with self.assertRaises(ValueError):
+            url = reverse('reference', kwargs={'reference_name': 'foo'})
+            self.get(url).status_code
+
+    def test_ok(self):
+        assert self.get(self.url).status_code, 200
+        self.req.get.assert_called_with(
+            'https://b.c/some/url/', verify=True,
+            data='', timeout=30,
+            headers={'Authorization': mock.ANY}
+        )
+        auth = self.req.get.call_args[1]['headers']['Authorization']
+        # A quick smoke test that signing happened and it smells like OAuth.
+        assert auth.startswith('OAuth realm="zippy:2605", oauth_nonce')

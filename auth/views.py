@@ -1,6 +1,7 @@
 from logging import getLogger
 from base64 import encodestring as encodebytes
 
+from curling.lib import sign_request
 from lxml import etree
 
 from django.conf import settings
@@ -112,5 +113,22 @@ def braintree_parse(request):
     return HttpResponse(status=204)
 
 
-def reference(request):
-    raise NotImplementedError
+def reference(request, reference_name):
+    """
+    Pass through the request to the reference implementation.
+    We have to:
+    * get the provider from the URL
+    * sign the request with OAuth
+    """
+    if reference_name not in settings.ZIPPY_CONFIGURATION:
+        raise ValueError('Unknown provider: {}'.format(reference_name))
+
+    new_request = prepare(request)
+    sign_request(
+        None,
+        settings.ZIPPY_CONFIGURATION[reference_name]['auth'],
+        headers=new_request['headers'],
+        method=new_request['method'].upper(),
+        params={'oauth_token': 'not-implemented'},
+        url=new_request['url'])
+    return send(new_request)
