@@ -5,6 +5,9 @@
 # sha256: _j2iOsNV182HHtbm222XK1UwKhh4sixWgbfB_tl5leA
 braintree==3.12.0
 
+# sha256: -_EGYNso5_ZQvf9gTq_tWbTAmdjGG8bzyurqx64Rt4s
+curling==0.4.1
+
 # sha256: xsfnqWHihH0FDSFMqW3DFnu18rJc1cbLLuqW4XF_St4
 # sha256: 2SrYWoaE2G0HgxKssIYIJIYaPPy0gkKPQIeEIfIlM5g
 Django==1.8.1
@@ -34,6 +37,10 @@ raven==4.2.3
 # sha256: Eglk19nvf06cYtFUCZ-hzSJgYgCpm9ZAoEL7w-TkuhY
 # sha256: T1Y7kHeCssld0suviCqWEz5WfUYpCg56r6DG8--tGbo
 requests==0.14.1
+
+# sha256: iByfRMNL3GUyURtqPCtmxf46kYvihh6d7Se829SY0DI
+# sha256: aEzjiIXYdEbfPLCPUl5qU1TDLFihzUspNLBFuOHFMak
+slumber==0.5.3
 
 # sha256: b8m-K1ABAiDJeSylsFis9DvyJelR0Jb6WnZcjdAeCR4
 # sha256: 3rTczTYxdaVUZdxlaZwAHDHbBeUJ6KQfzPPbYcFASsY
