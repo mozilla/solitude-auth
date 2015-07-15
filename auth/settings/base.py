@@ -9,11 +9,12 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 import logging
 import os
+from urlparse import urlparse
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = 'please change this'
 DEBUG = True
-
 TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
@@ -114,3 +115,17 @@ BANGO_AUTH = {
 
 BRAINTREE_PUBLIC_KEY = os.environ.get('BRAINTREE_PUBLIC_KEY')
 BRAINTREE_PRIVATE_KEY = os.environ.get('BRAINTREE_PRIVATE_KEY')
+
+# Zippy config to a local docker instance.
+url = os.environ.get('ZIPPY_BASE_URL', 'http://zippy:2605/')
+ZIPPY_CONFIGURATION = {
+    'reference': {
+        # No trailing slash.
+        'url': url,
+        'auth': {
+            'key': 'tobereplaced',
+            'secret': 'tobereplaced',
+            'realm': urlparse(url).netloc
+        },
+    },
+}

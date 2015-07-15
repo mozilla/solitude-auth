@@ -26,6 +26,9 @@ django-statsd-mozilla==0.3.8.3
 # sha256: f9NuSlY2DNXXMZ41ewSpDixrg26iIMiPlFHDAK4zzF4
 lxml==2.2.6
 
+# sha256: Q2B5YKWWQ9MkyHCDeHxNUmSAIh0eTUCgB-5NH0kGrms
+oauthlib==0.7.2
+
 # sha256: BJydMWAgmmYq7UgQsErz5T_QrYbqSwnM5tQXo7KVN5o
 # sha256: IXHpIC0RjTAtXbHey1Ldhit54qYmyhllOmkUV0psp9k
 nose==1.2.1
