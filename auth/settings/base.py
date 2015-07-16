@@ -17,8 +17,8 @@ SECRET_KEY = 'please change this'
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+ADMINS = ()
 ALLOWED_HOSTS = []
-
 
 LOGGING = {
     'version': 1,
