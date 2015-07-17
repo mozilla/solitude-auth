@@ -79,3 +79,11 @@ class TestSend(BaseTestCase):
         eq_(res.status_code, 201)
         eq_(res.content, 'foo')
         eq_(res['Content-Type'], 'app/xml')
+
+
+def test_url():
+    req = RequestFactory().get(
+        '/v1/reference/reference/bar?q=1',
+        **{settings.HEADER_DESTINATION: 'http://foo.com'})
+    eq_(utils.reference_url(req, utils.prepare(req), 'reference'),
+        'http://foo.com/bar?q=1')

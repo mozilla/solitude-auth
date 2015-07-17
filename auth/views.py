@@ -5,9 +5,10 @@ from curling.lib import sign_request
 from lxml import etree
 
 from django.conf import settings
+
 from django.http import HttpResponse
 
-from utils import BraintreeGateway, prepare, send
+from utils import BraintreeGateway, prepare, reference_url, send
 
 from braintree.environment import Environment
 from braintree.webhook_notification_gateway import WebhookNotificationGateway
@@ -124,6 +125,8 @@ def reference(request, reference_name):
         raise ValueError('Unknown provider: {}'.format(reference_name))
 
     new_request = prepare(request)
+    new_request['url'] = reference_url(request, new_request, reference_name)
+
     sign_request(
         None,
         settings.ZIPPY_CONFIGURATION[reference_name]['auth'],
