@@ -1,6 +1,8 @@
 from logging import getLogger
+from urlparse import urlsplit, urlunsplit
 
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 
 import requests
@@ -98,3 +100,17 @@ class BraintreeGateway(object):
     """
     def __init__(self):
         self.config = BraintreeConfig()
+
+
+def reference_url(request, parsed_request, reference_name):
+    """
+    The reference url is a combination of:
+    * the server name passed in the HTTP header
+    * the trailing URL after the proxy URL
+    * the query string
+    """
+    root = len(reverse('reference', kwargs={'reference_name': reference_name}))
+    scheme, netloc, path, query, fragment = urlsplit(parsed_request['url'])
+    path = request.META['PATH_INFO'][root:]
+    query = request.META.get('QUERY_STRING', '')
+    return urlunsplit((scheme, netloc, path, query, fragment))

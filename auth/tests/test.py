@@ -116,9 +116,9 @@ class TestZippy(BaseTestCase):
             self.get(url).status_code
 
     def test_ok(self):
-        assert self.get(self.url).status_code, 200
+        assert self.get(self.url + '/something?else=1').status_code, 200
         self.req.get.assert_called_with(
-            'https://b.c/some/url/', verify=True,
+            'https://b.c/something?else=1', verify=True,
             data='', timeout=30,
             headers={'Authorization': mock.ANY}
         )
